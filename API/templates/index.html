@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Home</title>
+{% endblock %}
+
+{% block body %}
+    <h1>Pass String to the Model</h1>
+    <form action="/" method="POST">
+        <label for="string_input">Enter a string:</label>
+        <input type="text" id="content" name="content">
+        <button type="submit">Submit</button>
+    </form>
+    {% if entries %} 
+        <h2>Processed Strings</h2>
+        <table>
+            <tr>
+                <th>Content</th>
+                <th>Output</th>
+                <th>Action</th>
+            </tr>
+            {% for entry in entries %}
+                <tr>
+                    <td>{{ entry.text }}</td>
+                    <td>{{ entry.output }}</td>
+                    <td>
+                        <a href="/delete/{{entry.id}}">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+  {% else %}
+    <h2>No entries yet!</h2>
+  {% endif %}
+{% endblock %}
