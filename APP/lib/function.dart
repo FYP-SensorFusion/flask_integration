@@ -15,6 +15,5 @@ Future<String> fetchData(String url) async {
   }
 
   final response = await http.post(uri, body: {'query': query});
-  print("Response.body = ${response.body}");
   return response.body;
 }
